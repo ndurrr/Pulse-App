@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse - Alex Martinez</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #7C3AED;
+            --primary-dark: #6D28D9;
+            --primary-light: #8B5CF6;
+            --secondary: #EC4899;
+            --accent: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --text-muted: #9CA3AF;
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F9FAFB;
+            --bg-tertiary: #F3F4F6;
+            --border: #E5E7EB;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* Header */
+        .header {
+            background: var(--bg-primary);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .back-btn:hover {
+            background: var(--bg-tertiary);
+            transform: translateX(-2px);
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        .logo-icon {
+            width: 32px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: orbFloat 3s ease-in-out infinite;
+        }
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        .logo-icon svg circle {
+            animation: orbPulse 4s ease-in-out infinite;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+        @keyframes orbPulse {
+            0%, 100% { transform: scale(1); transform-origin: center; }
+            50% { transform: scale(1.05); transform-origin: center; }
+        }
+        .logo span {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+        .logo span::after {
+            content: "®";
+            position: absolute;
+            font-size: 10px;
+            top: -2px;
+            right: -12px;
+            font-weight: 400;
+        }
+        .logo:hover .logo-icon svg circle {
+            filter: brightness(1.2);
+            animation: orbSpin 1s ease-in-out;
+        }
+        @keyframes orbSpin {
+            0% { transform: rotate(0deg) scale(1); transform-origin: center; }
+            50% { transform: rotate(180deg) scale(1.1); transform-origin: center; }
+            100% { transform: rotate(360deg) scale(1); transform-origin: center; }
+        }
+        .menu-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .menu-btn:hover {
+            background: var(--bg-secondary);
+        }
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+        }
+        /* Profile Section */
+        .profile-section {
+            background: var(--bg-primary);
+            padding: 32px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 4px;
+        }
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-primary);
+        }
+        .level-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--accent), #059669);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 3px solid var(--bg-primary);
+            animation: levelPulse 2s ease-in-out infinite;
+        }
+        @keyframes levelPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+        .profile-username {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .profile-bio {
+            max-width: 500px;
+            margin: 0 auto 24px;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding: 20px 0;
+            border-top: 1px solid var(--border);
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: block;
+            transition: all 0.3s ease;
+        }
+        .stat:hover .stat-value {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        /* Journey Section */
+        .journey-section {
+            margin: 20px;
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+        .progress-percentage {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 32px;
+        }
+        .progress-bar {
+            height: 8px;
+            background: var(--bg-tertiary);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            transition: width 1s ease-out;
+            position: relative;
+            animation: progressShimmer 2s ease-in-out infinite;
+        }
+        @keyframes progressShimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            animation: progressGlow 2s ease-in-out infinite;
+        }
+        @keyframes progressGlow {
+            0%, 100% { box-shadow: 0 0 8px rgba(236, 72, 153, 0.6); }
+            50% { box-shadow: 0 0 16px rgba(236, 72, 153, 0.8); }
+        }
+        .milestones {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            position: relative;
+        }
+        .milestone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .milestone-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+        .milestone.completed .milestone-dot {
+            background: var(--primary);
+            box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+            animation: completedPulse 3s ease-in-out infinite;
+        }
+        @keyframes completedPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .milestone.current .milestone-dot {
+            background: var(--secondary);
+            width: 16px;
+            height: 16px;
+            box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
+            animation: currentPulse 2s ease-in-out infinite;
+        }
+        @keyframes currentPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
+            }
+            50% {
+                transform: scale(1.2);
+                box-shadow: 0 0 0 8px rgba(236, 72, 153, 0.05);
+            }
+        }
+        .milestone:hover {
+            color: var(--text-primary);
+        }
+        /* Party Card */
+        .party-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .party-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .party-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .party-badge {
+            background: linear-gradient(135deg, var(--accent), #059669);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+            }
+        }
+        .party-members {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .member {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-secondary);
+            border: 2px solid var(--bg-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            animation: memberFloat 4s ease-in-out infinite;
+        }
+        .member:nth-child(1) { animation-delay: 0s; }
+        .member:nth-child(2) { animation-delay: 0.2s; }
+        .member:nth-child(3) { animation-delay: 0.4s; }
+        .member:nth-child(4) { animation-delay: 0.6s; }
+        .member:nth-child(5) { animation-delay: 0.8s; }
+        @keyframes memberFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .member:hover {
+            transform: translate
+
+
+(-6px) scale(1.1);
+            box-shadow: var(--shadow-md);
+        }
+        .member.you {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        .member.veteran {
+            border-color: var(--warning);
+            position: relative;
+        }
+        .member.veteran::after {
+            content: '⭐';
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            font-size: 14px;
+        }
+        /* Task Card */
+        .task-card {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .task-card.epic {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.02), rgba(236, 72, 153, 0.02));
+        }
+        .task-type {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        .task-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        .task-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .task-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+        }
+        .task-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        .task-meta-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+        }
+        .countdown-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 16px;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .countdown-label {
+            font-size: 12px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .countdown-time {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        /* Challenges Grid */
+        .challenges-grid {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .challenge-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border-left: 3px solid var(--primary);
+            transition: all 0.2s ease;
+        }
+        .challenge-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+        .challenge-number {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .challenge-info {
+            flex: 1;
+        }
+        .challenge-type {
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+        .challenge-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        /* Attendance Status */
+        .attendance-status {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+        .attendance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .attendance-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .attendance-count {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        .attendance-warning {
+            color: var(--danger);
+            font-weight: 600;
+        }
+        .attendance-members {
+            display: flex;
+            gap: 8px;
+        }
+        .attendance-member {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .attendance-member.confirmed {
+            background: var(--accent);
+        }
+        .attendance-member.pending {
+            background: var(--text-muted);
+        }
+        .attendance-member:hover {
+            transform: scale(1.1);
+        }
+        /* Action Button */
+        .action-btn {
+            width: 100%;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        .action-btn:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
+        /* Season Schedule */
+        .season-schedule {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .schedule-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+        }
+        .season-item {
+            text-align: center;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .season-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        .season-item.current {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
+            animation: currentSeason 3s ease-in-out infinite;
+        }
+        @keyframes currentSeason {
+            0%, 100% {
+                transform: translateY(0);
+                box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+            }
+            50% {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
+            }
+        }
+        .season-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .season-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .season-date {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        /* Activity Grid */
+        .activity-section {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 24px 20px;
+            margin: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .activity-grid-container {
+            overflow-x: auto;
+            padding: 16px 0;
+        }
+        .activity-grid {
+            display: grid;
+            grid-template-columns: 40px repeat(52, 12px);
+            gap: 3px;
+            min-width: 680px;
+        }
+        .week-row {
+            display: contents;
+        }
+        .day-label {
+            text-align: right;
+            padding-right: 8px;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .activity-cell {
+            aspect-ratio: 1;
+            border-radius: 2px;
+            background: var(--bg-tertiary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .activity-cell.level-1 { background: rgba(124, 58, 237, 0.2); }
+        .activity-cell.level-2 { background: rgba(124, 58, 237, 0.4); }
+        .activity-cell.level-3 { background: rgba(124, 58, 237, 0.6); }
+        .activity-cell.level-4 { background: var(--primary); }
+        .activity-cell:hover {
+            transform: scale(1.5);
+            border: 1px solid var(--primary);
+            z-index: 10;
+            position: relative;
+        }
+        .activity-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+        }
+        .activity-help-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 13px;
+            transition: opacity 0.2s;
+        }
+        .activity-help-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        .activity-legend {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .legend-box {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        .legend-box.level-0 { background: var(--bg-tertiary); }
+        .legend-box.level-1 { background: rgba(124, 58, 237, 0.2); }
+        .legend-box.level-2 { background: rgba(124, 58, 237, 0.4); }
+        .legend-box.level-3 { background: rgba(124, 58, 237, 0.6); }
+        .legend-box.level-4 { background: var(--primary); }
+        /* Recent Activities */
+        .recent-activities {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 24px 20px;
+            margin: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        .activities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .activity-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .activity-icon.completed {
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .activity-icon.training {
+            background: rgba(124, 58, 237, 0.1);
+        }
+        .activity-info {
+            flex: 1;
+        }
+        .activity-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .activity-date {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+        .activity-xp {
+            font-weight: 700;
+            color: var(--warning);
+            font-size: 14px;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+        .modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: var(--bg-primary);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 20px;
+            color: var(--text-secondary);
+        }
+        .modal-close:hover {
+            background: var(--bg-tertiary);
+        }
+        .modal-body {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            z-index: 100;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-radius: var(--radius);
+        }
+        .nav-item:hover {
+            background: var(--bg-secondary);
+            color: var(--primary);
+        }
+        .nav-item.active {
+            color: var(--primary);
+        }
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-label {
+            font-size: 11px;
+            font-weight: 500;
+        }
+        /* Utilities */
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin: 16px 0;
+            color: var(--danger);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .info-box {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin: 16px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+            transition: all 0.3s ease;
+            animation: fabPulse 2s ease-in-out infinite;
+            z-index: 999;
+        }
+        @keyframes fabPulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+            }
+            50% {
+                transform: scale(1.05) rotate(5deg);
+                box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+            }
+        }
+        .fab:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 6px 24px rgba(124, 58, 237, 0.5);
+        }
+        /* Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .journey-section, .task-card, .season-schedule, .activity-section {
+            animation: slideIn 0.6s ease-out;
+        }
+        /* Responsive */
+        @media (max-width: 640px) {
+            .profile-stats {
+                gap: 24px;
+            }
+            .seasons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .task-meta {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .milestones {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-nav">
+            <button class="back-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M5 12L12 19M5 12L12 5"/>
+                </svg>
+            </button>
+        </div>
+    
+    <!-- Floating Action Button -->
+    <div class="fab" title="Quick Actions">
+        ⚡
+    </div>
+    
+    <!-- Modal -->
+    <div id="activityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">📊 Weekly Activity</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>The weekly activity chart is a visual display of your activity on Pulse over the past year.</p>
+                <br>
+                <p><strong>Activities that contribute towards this chart include:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Attending games</li>
+                    <li>Hosting games</li>
+                    <li>Updating your availability schedule</li>
+                    <li>Reviewing hosts</li>
+                    <li>Tipping hosts</li>
+                </ul>
+                <br>
+                <p>The more active you are, the more vibrant your activity chart becomes! 🔥</p>
+            </div>
+        </div>
+    </div>
+        
+        <div class="logo">
+            <div class="logo-icon">
+                <svg width="32" height="40" viewBox="0 0 32 40" fill="none">
+                    <defs>
+                        <linearGradient id="orbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+                            <stop offset="33%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                            <stop offset="66%" style="stop-color:#ec4899;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+                        </linearGradient>
+                        <radialGradient id="shadowGradient">
+                            <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
+                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.05" />
+                        </radialGradient>
+                        <filter id="orbGlow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+                            <feComponentTransfer>
+                                <feFuncA type="discrete" tableValues="0 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 1"/>
+                            </feComponentTransfer>
+                        </filter>
+                    </defs>
+                    <!-- Shadow/reflection ellipse -->
+                    <ellipse cx="16" cy="30" rx="14" ry="6" fill="url(#shadowGradient)"/>
+                    <!-- Main gradient orb -->
+                    <circle cx="20" cy="14" r="11" fill="url(#orbGradient)" filter="url(#orbGlow)"/>
+                    <!-- Highlight for 3D effect -->
+                    <ellipse cx="18" cy="11" rx="6" ry="5" fill="white" opacity="0.3"/>
+                </svg>
+            </div>
+            <span>pulse</span>
+        </div>
+        
+        <button class="menu-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="1"/>
+                <circle cx="12" cy="5" r="1"/>
+                <circle cx="12" cy="19" r="1"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <div class="profile-avatar">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237C3AED'/%3E%3Cstop offset='100%25' style='stop-color:%23EC4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='80' fill='white'%3EA%3C/text%3E%3C/svg%3E" alt="Profile">
+                <span class="level-badge">⭐ Level 3</span>
+            </div>
+            <h1 class="profile-name">Alex Martinez</h1>
+            <p class="profile-username">@alexfutsal • 4,850 XP 💎</p>
+            <p class="profile-bio">
+                Professional futsal player & skills coach 🎯 Building community through sports ⚡
+                5x National Champion 🏆 Barcelona FC 🔥
+            </p>
+            <div class="profile-stats">
+                <div class="stat">
+                    <span class="stat-value">3.2k 🔥</span>
+                    <span class="stat-label">Activities</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">12.8k 👥</span>
+                    <span class="stat-label">Community</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">248 ⚡</span>
+                    <span class="stat-label">Friends</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Journey Progress -->
+        <div class="journey-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">⚔️ Your Pulse Journey</h2>
+                    <p class="section-subtitle">Summer Season 2025</p>
+                </div>
+                <div class="progress-percentage">60% 🔥</div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+                <div class="milestones">
+                    <div class="milestone completed">
+                        <div class="milestone-dot"></div>
+                        <span>JOINED</span>
+                    </div>
+                    <div class="milestone completed">
+                        <div class="milestone-dot"></div>
+                        <span>FIRST MEET</span>
+                    </div>
+                    <div class="milestone completed">
+                        <div class="milestone-dot"></div>
+                        <span>TEAM BOND</span>
+                    </div>
+                    <div class="milestone current">
+                        <div class="milestone-dot"></div>
+                        <span>CHALLENGE</span>
+                    </div>
+                    <div class="milestone">
+                        <div class="milestone-dot"></div>
+                        <span>GRADUATION</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Party Card -->
+            <div class="party-card">
+                <div class="party-header">
+                    <h3 class="party-name">🔥 Phoenix Squad</h3>
+                    <span class="party-badge">⚔️ BATTLE READY</span>
+                </div>
+                <div class="party-members">
+                    <div class="member veteran" title="Sarah - Veteran Leader">S</div>
+                    <div class="member you" title="You">A</div>
+                    <div class="member" title="Mike">M</div>
+                    <div class="member" title="Lisa">L</div>
+                    <div class="member" title="Tom">T</div>
+                </div>
+                <div class="info-box">
+                    <strong>💪 Party Strengths:</strong> Mental (Lisa) 🧠 | Physical (Mike) 💪 | Balance (Tom) ⚖️ | Speed (You) ⚡ | Leadership (Sarah) ⭐
+                </div>
+            </div>
+        </div>
+
+        <!-- Current Task -->
+        <div class="task-card epic">
+            <div class="countdown-banner">
+                <div class="countdown-label">⏰ BATTLE COUNTDOWN ⏰</div>
+                <div class="countdown-time">18 DAYS : 14 HOURS : 32 MIN</div>
+            </div>
+            <span class="task-type">⚔️ Challenge Stage</span>
+            <h3 class="task-title">Summer Battle Royale 2025</h3>
+            <p class="task-description">
+                Epic seasonal event! 🏆 Compete against 3 rival parties in 5 legendary challenges.
+                This happens only 4 times per year - don't miss it! 💪
+            </p>
+            <div class="warning-box">
+                <strong>⚠️ CRITICAL:</strong> All 5 members must attend or your party fails and waits 3 months for the Fall Battle Royale!
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-item">
+                    <div class="challenge-number">1</div>
+                    <div class="challenge-info">
+                        <div class="challenge-type">🧠 Mental</div>
+                        <div class="challenge-desc">Speed Chess Tournament</div>
+                    </div>
+                </div>
+                <div class="challenge-item">
+                    <div class="challenge-number">2</div>
+                    <div class="challenge-info">
+                        <div class="challenge-type">💪 Physical</div>
+                        <div class="challenge-desc">Tug of War</div>
+                    </div>
+                </div>
+                <div class="challenge-item">
+                    <div class="challenge-number">3</div>
+                    <div class="challenge-info">
+                        <div class="challenge-type">⚖️ Balance</div>
+                        <div class="challenge-desc">Slackline Race</div>
+                    </div>
+                </div>
+                <div class="challenge-item">
+                    <div class="challenge-number">4</div>
+                    <div class="challenge-info">
+                        <div class="challenge-type">⚡ Speed</div>
+                        <div class="challenge-desc">40-Yard Sprint</div>
+                    </div>
+                </div>
+                <div class="challenge-item">
+                    <div class="challenge-number">5</div>
+                    <div class="challenge-info">
+                        <div class="challenge-type">❓ Mystery</div>
+                        <div class="challenge-desc">??? (Revealed on game day)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="task-meta">
+                <div class="task-meta-item">
+                    <div class="task-meta-icon">📅</div>
+                    <span>Saturday, Aug 30 • 2:00 PM</span>
+                </div>
+                <div class="task-meta-item">
+                    <div class="task-meta-icon">📍</div>
+                    <span>Olympic Sports Complex</span>
+                </div>
+                <div class="task-meta-item">
+                    <div class="task-meta-icon">🏆</div>
+                    <span>+1000 XP</span>
+                </div>
+            </div>
+            <div class="attendance-status">
+                <div class="attendance-header">
+                    <span class="attendance-label">Battle Attendance</span>
+                    <span class="attendance-count">2/5 confirmed</span>
+                    <span class="attendance-warning">⚠️ Need ALL 5!</span>
+                </div>
+                <div class="attendance-members">
+                    <div class="attendance-member confirmed" title="Sarah - Confirmed">S</div>
+                    <div class="attendance-member pending" title="You - Click to confirm">A</div>
+                    <div class="attendance-member confirmed" title="Mike - Confirmed">M</div>
+                    <div class="attendance-member pending" title="Lisa - Not confirmed">L</div>
+                    <div class="attendance-member pending" title="Tom - Not confirmed">T</div>
+                </div>
+            </div>
+            <div class="info-box" style="margin-top: 16px;">
+                <strong>🏆 Rival Parties:</strong> Dragon Force 🐉 | Thunder Legion ⚡ | Shadow Wolves 🐺
+            </div>
+            <button class="action-btn">⚔️ Confirm Battle Attendance ⚔️</button>
+        </div>
+
+        <!-- Season Schedule -->
+        <div class="season-schedule">
+            <h3 class="schedule-title">🗓️ 2025 Battle Royale Seasons</h3>
+            <div class="seasons-grid">
+                <div class="season-item">
+                    <div class="season-icon">🌸</div>
+                    <div class="season-name">Spring</div>
+                    <div class="season-date">May 24 ✓</div>
+                </div>
+                <div class="season-item current">
+                    <div class="season-icon">☀️</div>
+                    <div class="season-name">Summer</div>
+                    <div class="season-date">Aug 30</div>
+                </div>
+                <div class="season-item">
+                    <div class="season-icon">🍂</div>
+                    <div class="season-name">Fall</div>
+                    <div class="season-date">Nov 22</div>
+                </div>
+                <div class="season-item">
+                    <div class="season-icon">❄️</div>
+                    <div class="season-name">Winter</div>
+                    <div class="season-date">Feb 21</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Grid -->
+        <div class="activity-section">
+            <h3 class="section-title">📊 Weekly Activity</h3>
+            <div class="activity-grid-container">
+                <div class="activity-grid">
+                    <div class="week-row">
+                        <div class="day-label">Mon</div>
+                    </div>
+                    <div class="week-row">
+                        <div class="day-label">Wed</div>
+                    </div>
+                    <div class="week-row">
+                        <div class="day-label">Fri</div>
+                    </div>
+                    <div class="week-row">
+                        <div class="day-label">Sun</div>
+                    </div>
+                </div>
+            </div>
+            <div class="activity-footer">
+                <a href="#" class="activity-help-link" onclick="openModal(event)">What is this?</a>
+                <div class="activity-legend">
+                    <span>Less</span>
+                    <span class="legend-box level-0"></span>
+                    <span class="legend-box level-1"></span>
+                    <span class="legend-box level-2"></span>
+                    <span class="legend-box level-3"></span>
+                    <span class="legend-box level-4"></span>
+                    <span>More</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activities -->
+        <div class="recent-activities">
+            <h3 class="section-title">🎯 Recent Achievements</h3>
+            <div class="activities-list">
+                <div class="activity-item">
+                    <div class="activity-icon completed">✅</div>
+                    <div class="activity-info">
+                        <div class="activity-title">First Meet: Beach Volleyball & 3km Run</div>
+                        <div class="activity-date">June 15, 2025</div>
+                    </div>
+                    <div class="activity-xp">+250 XP</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon completed">✅</div>
+                    <div class="activity-info">
+                        <div class="activity-title">Team Bond: Escape Room & Strategy Session</div>
+                        <div class="activity-date">July 20, 2025</div>
+                    </div>
+                    <div class="activity-xp">+300 XP</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon training">🏋️</div>
+                    <div class="activity-info">
+                        <div class="activity-title">Pre-Battle Training: Sprint Practice</div>
+                        <div class="activity-date">August 10, 2025</div>
+                    </div>
+                    <div class="activity-xp">+100 XP</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item">
+            <div class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+            </div>
+            <span class="nav-label">Home</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+            </div>
+            <span class="nav-label">Chat</span>
+        </div>
+        <div class="nav-item">
+            <div class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+            </div>
+            <span class="nav-label">Alerts</span>
+        </div>
+        <div class="nav-item active">
+            <div class="nav-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </div>
+            <span class="nav-label">Profile</span>
+        </div>
+    </div>
+
+    <script>
+        // Generate activity grid data
+        const activityGrid = document.querySelector('.activity-grid');
+        const days = ['Mon', 'Wed', 'Fri', 'Sun'];
+        days.forEach((day, dayIndex) => {
+            const row = activityGrid.children[dayIndex];
+            for (let week = 0; week < 52; week++) {
+                const cell = document.createElement('div');
+                cell.className = 'activity-cell';
+                // Random activity level with higher probability for recent weeks
+                const recentBonus = week > 40 ? 2 : 0;
+                const level = Math.min(4, Math.floor(Math.random() * 3) + (week > 45 ? recentBonus : 0));
+                if (Math.random() > 0.2 || week > 42) {
+                    cell.classList.add(`level-${level}`);
+                }
+                cell.title = `${day}, Week ${week + 1}`;
+                row.appendChild(cell);
+            }
+        });
+
+        // Countdown timer - FIXED
+        function updateCountdown() {
+            const battleDate = new Date('2025-08-30T14:00:00');
+            const now = new Date();
+            const diff = battleDate - now;
+            
+            if (diff > 0) {
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                const countdownTimer = document.querySelector('.countdown-time');
+                if (countdownTimer) {
+                    countdownTimer.textContent = `${days} DAYS : ${hours} HOURS : ${minutes} MIN`;
+                }
+            }
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
+
+        // Modal functions
+        function openModal(event) {
+            event.preventDefault();
+            document.getElementById('activityModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('activityModal').classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('activityModal');
+            if (event.target == modal) {
+                modal.classList.remove('show');
+            }
+        }
+
+        // Confirm attendance
+        const actionBtn = document.querySelector('.action-btn');
+        actionBtn.addEventListener('click', function() {
+            if (!this.disabled) {
+                this.textContent = '⚔️ Battle Ready! ⚔️';
+                this.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+                this.disabled = true;
+                
+                // Update attendance
+                const yourAvatar = document.querySelectorAll('.attendance-member')[1];
+                yourAvatar.classList.remove('pending');
+                yourAvatar.classList.add('confirmed');
+                
+                // Update count
+                const countElement = document.querySelector('.attendance-count');
+                countElement.textContent = '3/5 confirmed';
+                
+                // Show notification
+                showNotification('⚔️ Battle attendance confirmed! See you at the Summer Battle Royale!');
+                
+                // Add XP animation
+                animateXP('+50 XP');
+            }
+        });
+
+        // XP animation function
+        function animateXP(xpText) {
+            const xpElement = document.createElement('div');
+            xpElement.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 48px;
+                font-weight: 700;
+                color: #F59E0B;
+                z-index: 2000;
+                animation: xpFloat 2s ease-out forwards;
+                pointer-events: none;
+            `;
+            xpElement.textContent = xpText;
+            document.body.appendChild(xpElement);
+            setTimeout(() => xpElement.remove(), 2000);
+        }
+
+        // Notification system
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: linear-gradient(135deg, #7C3AED, #EC4899);
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 1000;
+                animation: slideIn 0.3s ease-out;
+                font-weight: 600;
+                max-width: 300px;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideOut {
+                to { opacity: 0; transform: translateX(100%); }
+            }
+            @keyframes xpFloat {
+                0% {
+                    opacity: 0;
+                    transform: translate(-50%, -50%) scale(0.5);
+                }
+                50% {
+                    opacity: 1;
+                    transform: translate(-50%, -60%) scale(1.2);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translate(-50%, -80%) scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Simulate member confirmations
+        function simulateMemberActivity() {
+            const pendingMembers = document.querySelectorAll('.attendance-member.pending');
+            if (pendingMembers.length > 1 && Math.random() > 0.7) {
+                const members = Array.from(pendingMembers).filter((m, i) => i !== 0); // Skip "You"
+                if (members.length > 0) {
+                    const randomMember = members[Math.floor(Math.random() * members.length)];
+                    const memberName = randomMember.title.split(' ')[0];
+                    randomMember.classList.remove('pending');
+                    randomMember.classList.add('confirmed');
+                    
+                    const count = document.querySelectorAll('.attendance-member.confirmed').length;
+                    document.querySelector('.attendance-count').textContent = `${count}/5 confirmed`;
+                    
+                    showNotification(`⚔️ ${memberName} confirmed for Battle Royale!`);
+                    
+                    if (count === 5) {
+                        setTimeout(() => {
+                            showNotification('🎉 FULL SQUAD READY! Phoenix Squad is complete!');
+                            animateXP('+100 XP BONUS');
+                        }, 1000);
+                    }
+                }
+            }
+        }
+
+        setInterval(simulateMemberActivity, 10000);
+
+        // Floating Action Button
+        document.querySelector('.fab').addEventListener('click', function() {
+            const actions = ['⚡ Quick Match', '🎯 Find Activity', '📅 Schedule', '🏆 Leaderboard'];
+            const randomAction = actions[Math.floor(Math.random() * actions.length)];
+            showNotification(`${randomAction} coming soon!`);
+            animateXP('+10 XP');
+        });
+
+        document.querySelectorAll('.milestone').forEach(milestone => {
+            milestone.addEventListener('click', function() {
+                const label = this.querySelector('span').textContent;
+                const messages = {
+                    'JOINED': '🎯 Welcome! Your journey begins here',
+                    'FIRST MEET': '💪 Sweat together, grow together!',
+                    'TEAM BOND': '🤝 Discover your party\'s hidden strengths',
+                    'CHALLENGE': '⚔️ Epic Battle Royale - Only 4 times a year!',
+                    'GRADUATION': '🎓 The ultimate 40-person victory raid!'
+                };
+                
+                if (messages[label]) {
+                    showNotification(messages[label]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
