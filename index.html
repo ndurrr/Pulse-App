@@ -10,6 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         :root {
             --primary: #7C3AED;
             --primary-dark: #6D28D9;
@@ -28,10 +29,12 @@
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
             --radius: 12px;
             --radius-lg: 16px;
             --radius-xl: 20px;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, Oxygen, Ubuntu, sans-serif;
             background: var(--bg-secondary);
@@ -39,6 +42,7 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
+
         /* Header */
         .header {
             background: var(--bg-primary);
@@ -52,11 +56,13 @@
             z-index: 100;
             box-shadow: var(--shadow-sm);
         }
+
         .header-nav {
             display: flex;
             align-items: center;
             gap: 12px;
         }
+
         .back-btn {
             width: 40px;
             height: 40px;
@@ -69,10 +75,12 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .back-btn:hover {
             background: var(--bg-tertiary);
             transform: translateX(-2px);
         }
+
         .logo {
             display: flex;
             align-items: center;
@@ -84,9 +92,11 @@
             cursor: pointer;
             transition: transform 0.3s ease;
         }
+
         .logo:hover {
             transform: scale(1.05);
         }
+
         .logo-icon {
             width: 32px;
             height: 40px;
@@ -96,43 +106,17 @@
             position: relative;
             animation: orbFloat 3s ease-in-out infinite;
         }
+
         .logo-icon svg {
             width: 100%;
             height: 100%;
         }
-        .logo-icon svg circle {
-            animation: orbPulse 4s ease-in-out infinite;
-        }
+
         @keyframes orbFloat {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-2px); }
         }
-        @keyframes orbPulse {
-            0%, 100% { transform: scale(1); transform-origin: center; }
-            50% { transform: scale(1.05); transform-origin: center; }
-        }
-        .logo span {
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            position: relative;
-        }
-        .logo span::after {
-            content: "®";
-            position: absolute;
-            font-size: 10px;
-            top: -2px;
-            right: -12px;
-            font-weight: 400;
-        }
-        .logo:hover .logo-icon svg circle {
-            filter: brightness(1.2);
-            animation: orbSpin 1s ease-in-out;
-        }
-        @keyframes orbSpin {
-            0% { transform: rotate(0deg) scale(1); transform-origin: center; }
-            50% { transform: rotate(180deg) scale(1.1); transform-origin: center; }
-            100% { transform: rotate(360deg) scale(1); transform-origin: center; }
-        }
+
         .menu-btn {
             width: 40px;
             height: 40px;
@@ -145,15 +129,18 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .menu-btn:hover {
             background: var(--bg-secondary);
         }
+
         /* Container */
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding-bottom: 80px;
         }
+
         /* Profile Section */
         .profile-section {
             background: var(--bg-primary);
@@ -161,6 +148,7 @@
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
+
         .profile-avatar {
             width: 120px;
             height: 120px;
@@ -170,6 +158,7 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             padding: 4px;
         }
+
         .profile-avatar img {
             width: 100%;
             height: 100%;
@@ -177,6 +166,7 @@
             object-fit: cover;
             border: 4px solid var(--bg-primary);
         }
+
         .level-badge {
             position: absolute;
             bottom: 0;
@@ -190,21 +180,25 @@
             border: 3px solid var(--bg-primary);
             animation: levelPulse 2s ease-in-out infinite;
         }
+
         @keyframes levelPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
+
         .profile-name {
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 4px;
             color: var(--text-primary);
         }
+
         .profile-username {
             color: var(--text-secondary);
             font-size: 16px;
             margin-bottom: 16px;
         }
+
         .profile-bio {
             max-width: 500px;
             margin: 0 auto 24px;
@@ -212,16 +206,20 @@
             font-size: 15px;
             line-height: 1.6;
         }
+
         .profile-stats {
             display: flex;
             justify-content: center;
             gap: 48px;
             padding: 20px 0;
             border-top: 1px solid var(--border);
+            flex-wrap: wrap;
         }
+
         .stat {
             text-align: center;
         }
+
         .stat-value {
             font-size: 24px;
             font-weight: 700;
@@ -229,16 +227,19 @@
             display: block;
             transition: all 0.3s ease;
         }
+
         .stat:hover .stat-value {
             color: var(--primary);
             transform: scale(1.1);
         }
+
         .stat-label {
             font-size: 13px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         /* Journey Section */
         .journey-section {
             margin: 20px;
@@ -247,31 +248,37 @@
             padding: 24px;
             box-shadow: var(--shadow-sm);
         }
+
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 24px;
         }
+
         .section-title {
             font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
         }
+
         .section-subtitle {
             font-size: 14px;
             color: var(--text-secondary);
             margin-top: 4px;
         }
+
         .progress-percentage {
             font-size: 24px;
             font-weight: 700;
             color: var(--primary);
         }
-        /* Progress Bar */
+
+        /* Progress Container */
         .progress-container {
             margin-bottom: 32px;
         }
+
         .progress-bar {
             height: 8px;
             background: var(--bg-tertiary);
@@ -279,6 +286,7 @@
             overflow: hidden;
             position: relative;
         }
+
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
@@ -287,10 +295,12 @@
             position: relative;
             animation: progressShimmer 2s ease-in-out infinite;
         }
+
         @keyframes progressShimmer {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.9; }
         }
+
         .progress-fill::after {
             content: '';
             position: absolute;
@@ -304,16 +314,19 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             animation: progressGlow 2s ease-in-out infinite;
         }
+
         @keyframes progressGlow {
             0%, 100% { box-shadow: 0 0 8px rgba(236, 72, 153, 0.6); }
             50% { box-shadow: 0 0 16px rgba(236, 72, 153, 0.8); }
         }
+
         .milestones {
             display: flex;
             justify-content: space-between;
             margin-top: 16px;
             position: relative;
         }
+
         .milestone {
             display: flex;
             flex-direction: column;
@@ -323,6 +336,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .milestone-dot {
             width: 12px;
             height: 12px;
@@ -331,15 +345,18 @@
             margin-bottom: 8px;
             transition: all 0.3s ease;
         }
+
         .milestone.completed .milestone-dot {
             background: var(--primary);
             box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
             animation: completedPulse 3s ease-in-out infinite;
         }
+
         @keyframes completedPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
+
         .milestone.current .milestone-dot {
             background: var(--secondary);
             width: 16px;
@@ -347,6 +364,7 @@
             box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.1);
             animation: currentPulse 2s ease-in-out infinite;
         }
+
         @keyframes currentPulse {
             0%, 100% {
                 transform: scale(1);
@@ -357,9 +375,11 @@
                 box-shadow: 0 0 0 8px rgba(236, 72, 153, 0.05);
             }
         }
+
         .milestone:hover {
             color: var(--text-primary);
         }
+
         /* Party Card */
         .party-card {
             background: var(--bg-secondary);
@@ -367,17 +387,20 @@
             padding: 20px;
             margin-bottom: 20px;
         }
+
         .party-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 16px;
         }
+
         .party-name {
             font-size: 16px;
             font-weight: 600;
             color: var(--text-primary);
         }
+
         .party-badge {
             background: linear-gradient(135deg, var(--accent), #059669);
             color: white;
@@ -387,6 +410,7 @@
             font-weight: 600;
             animation: badgePulse 3s ease-in-out infinite;
         }
+
         @keyframes badgePulse {
             0%, 100% {
                 transform: scale(1);
@@ -397,11 +421,13 @@
                 box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
             }
         }
+
         .party-members {
             display: flex;
             gap: 8px;
             margin-bottom: 16px;
         }
+
         .member {
             width: 48px;
             height: 48px;
@@ -416,36 +442,31 @@
             border: 2px solid var(--bg-primary);
             cursor: pointer;
             transition: all 0.2s ease;
-            animation: memberFloat 4s ease-in-out infinite;
+            position: relative;
         }
-        .member:nth-child(1) { animation-delay: 0s; }
-        .member:nth-child(2) { animation-delay: 0.2s; }
-        .member:nth-child(3) { animation-delay: 0.4s; }
-        .member:nth-child(4) { animation-delay: 0.6s; }
-        .member:nth-child(5) { animation-delay: 0.8s; }
-        @keyframes memberFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
+
         .member:hover {
             transform: translateY(-6px) scale(1.1);
             box-shadow: var(--shadow-md);
         }
+
         .member.you {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
         }
+
         .member.veteran {
-            border-color: var(--warning);
-            position: relative;
+            border: 3px solid var(--warning);
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
         }
-        .member.veteran::after {
-            content: '⭐';
+
+        .member-role {
             position: absolute;
-            bottom: -2px;
-            right: -2px;
-            font-size: 14px;
+            bottom: -8px;
+            right: -4px;
+            font-size: 12px;
         }
+
         /* Task Card */
         .task-card {
             background: var(--bg-primary);
@@ -456,10 +477,12 @@
             border: 2px solid var(--border);
             transition: all 0.3s ease;
         }
+
         .task-card.epic {
             border-color: var(--primary);
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.02), rgba(236, 72, 153, 0.02));
         }
+
         .task-type {
             display: inline-block;
             background: var(--primary);
@@ -472,17 +495,20 @@
             margin-bottom: 16px;
             letter-spacing: 0.5px;
         }
+
         .task-title {
             font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 12px;
         }
+
         .task-description {
             color: var(--text-secondary);
             margin-bottom: 20px;
             line-height: 1.6;
         }
+
         .task-meta {
             display: flex;
             flex-wrap: wrap;
@@ -492,6 +518,7 @@
             background: var(--bg-secondary);
             border-radius: var(--radius);
         }
+
         .task-meta-item {
             display: flex;
             align-items: center;
@@ -499,6 +526,7 @@
             color: var(--text-secondary);
             font-size: 14px;
         }
+
         .task-meta-icon {
             width: 20px;
             height: 20px;
@@ -508,6 +536,7 @@
             background: var(--bg-tertiary);
             border-radius: 6px;
         }
+
         .countdown-banner {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
@@ -516,6 +545,7 @@
             text-align: center;
             margin-bottom: 20px;
         }
+
         .countdown-label {
             font-size: 12px;
             opacity: 0.9;
@@ -523,16 +553,19 @@
             letter-spacing: 1px;
             margin-bottom: 8px;
         }
+
         .countdown-time {
             font-size: 24px;
             font-weight: 700;
         }
+
         /* Challenges Grid */
         .challenges-grid {
             display: grid;
             gap: 12px;
             margin-bottom: 20px;
         }
+
         .challenge-item {
             display: flex;
             align-items: center;
@@ -543,10 +576,12 @@
             border-left: 3px solid var(--primary);
             transition: all 0.2s ease;
         }
+
         .challenge-item:hover {
             transform: translateX(4px);
             box-shadow: var(--shadow-sm);
         }
+
         .challenge-number {
             width: 32px;
             height: 32px;
@@ -558,9 +593,11 @@
             justify-content: center;
             font-weight: 700;
         }
+
         .challenge-info {
             flex: 1;
         }
+
         .challenge-type {
             font-weight: 600;
             color: var(--text-primary);
@@ -568,10 +605,12 @@
             font-size: 12px;
             letter-spacing: 0.5px;
         }
+
         .challenge-desc {
             color: var(--text-secondary);
             font-size: 14px;
         }
+
         /* Attendance Status */
         .attendance-status {
             background: var(--bg-secondary);
@@ -579,29 +618,35 @@
             padding: 16px;
             margin-bottom: 20px;
         }
+
         .attendance-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
         }
+
         .attendance-label {
             font-size: 14px;
             font-weight: 600;
             color: var(--text-primary);
         }
+
         .attendance-count {
             font-size: 14px;
             color: var(--text-secondary);
         }
+
         .attendance-warning {
             color: var(--danger);
             font-weight: 600;
         }
+
         .attendance-members {
             display: flex;
             gap: 8px;
         }
+
         .attendance-member {
             width: 40px;
             height: 40px;
@@ -615,15 +660,19 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .attendance-member.confirmed {
             background: var(--accent);
         }
+
         .attendance-member.pending {
             background: var(--text-muted);
         }
+
         .attendance-member:hover {
             transform: scale(1.1);
         }
+
         /* Action Button */
         .action-btn {
             width: 100%;
@@ -638,15 +687,18 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow-md);
         }
+
         .action-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
+
         .action-btn:disabled {
             background: var(--text-muted);
             cursor: not-allowed;
             transform: none;
         }
+
         /* Season Schedule */
         .season-schedule {
             background: var(--bg-primary);
@@ -655,17 +707,20 @@
             margin: 20px;
             box-shadow: var(--shadow-sm);
         }
+
         .schedule-title {
             font-size: 16px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 16px;
         }
+
         .seasons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
         }
+
         .season-item {
             text-align: center;
             padding: 16px;
@@ -675,16 +730,18 @@
             transition: all 0.3s ease;
             cursor: pointer;
         }
+
         .season-item:hover {
-            transform: translate
-Y(-2px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-sm);
         }
+
         .season-item.current {
             border-color: var(--primary);
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
             animation: currentSeason 3s ease-in-out infinite;
         }
+
         @keyframes currentSeason {
             0%, 100% {
                 transform: translateY(0);
@@ -695,32 +752,61 @@ Y(-2px);
                 box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3);
             }
         }
+
         .season-icon {
             font-size: 32px;
             margin-bottom: 8px;
         }
+
         .season-name {
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 4px;
         }
+
         .season-date {
             font-size: 13px;
             color: var(--text-secondary);
         }
-        /* Activity Grid */
-        .activity-section {
+
+        /* Pulse Activity Visualization */
+        .pulse-activity-section {
             background: var(--bg-primary);
             border-radius: var(--radius-lg);
             padding: 24px 20px;
             margin: 20px;
             box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            position: relative;
         }
+
+        .pulse-activity-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--primary), 
+                var(--secondary), 
+                var(--primary), 
+                transparent
+            );
+            animation: scanLine 3s linear infinite;
+        }
+
+        @keyframes scanLine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
         .activity-grid-container {
             overflow-x: auto;
             padding: 16px 0;
         }
-        /* Month Labels - NEW */
+
         .month-labels {
             display: grid;
             grid-template-columns: 40px repeat(52, 12px);
@@ -728,24 +814,29 @@ Y(-2px);
             min-width: 680px;
             margin-bottom: 8px;
         }
+
         .month-label {
             font-size: 11px;
             color: var(--text-muted);
             text-align: center;
             padding: 0 2px;
         }
+
         .month-spacer {
             width: 40px;
         }
+
         .activity-grid {
             display: grid;
             grid-template-columns: 40px repeat(52, 12px);
             gap: 3px;
             min-width: 680px;
         }
+
         .week-row {
             display: contents;
         }
+
         .day-label {
             text-align: right;
             padding-right: 8px;
@@ -755,6 +846,7 @@ Y(-2px);
             align-items: center;
             justify-content: flex-end;
         }
+
         .activity-cell {
             aspect-ratio: 1;
             border-radius: 2px;
@@ -762,32 +854,79 @@ Y(-2px);
             cursor: pointer;
             transition: all 0.2s ease;
         }
+
         .activity-cell.level-1 { background: rgba(124, 58, 237, 0.2); }
         .activity-cell.level-2 { background: rgba(124, 58, 237, 0.4); }
         .activity-cell.level-3 { background: rgba(124, 58, 237, 0.6); }
         .activity-cell.level-4 { background: var(--primary); }
+
         .activity-cell:hover {
             transform: scale(1.5);
             border: 1px solid var(--primary);
             z-index: 10;
             position: relative;
         }
+
+        /* Activity Detail Tooltip */
+        .activity-detail-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+            z-index: 1000;
+            border: 1px solid rgba(124, 58, 237, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: all 0.2s ease;
+        }
+
+        .activity-detail-tooltip.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .activity-detail-tooltip .tooltip-header {
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-bottom: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 4px;
+        }
+
+        .activity-detail-tooltip .tooltip-activities {
+            margin-bottom: 6px;
+        }
+
+        .activity-detail-tooltip .tooltip-connections {
+            color: var(--warning);
+            font-weight: 600;
+        }
+
         .activity-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-top: 16px;
         }
+
         .activity-help-link {
             color: var(--primary);
             text-decoration: none;
             font-size: 13px;
             transition: opacity 0.2s;
         }
+
         .activity-help-link:hover {
             opacity: 0.8;
             text-decoration: underline;
         }
+
         .activity-legend {
             display: flex;
             align-items: center;
@@ -795,16 +934,19 @@ Y(-2px);
             font-size: 12px;
             color: var(--text-muted);
         }
+
         .legend-box {
             width: 12px;
             height: 12px;
             border-radius: 2px;
         }
+
         .legend-box.level-0 { background: var(--bg-tertiary); }
         .legend-box.level-1 { background: rgba(124, 58, 237, 0.2); }
         .legend-box.level-2 { background: rgba(124, 58, 237, 0.4); }
         .legend-box.level-3 { background: rgba(124, 58, 237, 0.6); }
         .legend-box.level-4 { background: var(--primary); }
+
         /* Recent Activities */
         .recent-activities {
             background: var(--bg-primary);
@@ -813,12 +955,14 @@ Y(-2px);
             margin: 20px;
             box-shadow: var(--shadow-sm);
         }
+
         .activities-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
             margin-top: 16px;
         }
+
         .activity-item {
             display: flex;
             align-items: center;
@@ -829,10 +973,12 @@ Y(-2px);
             transition: all 0.2s ease;
             cursor: pointer;
         }
+
         .activity-item:hover {
             transform: translateX(4px);
             box-shadow: var(--shadow-sm);
         }
+
         .activity-icon {
             width: 40px;
             height: 40px;
@@ -842,29 +988,152 @@ Y(-2px);
             justify-content: center;
             font-size: 20px;
         }
+
         .activity-icon.completed {
             background: rgba(16, 185, 129, 0.1);
         }
+
         .activity-icon.training {
             background: rgba(124, 58, 237, 0.1);
         }
+
         .activity-info {
             flex: 1;
         }
+
         .activity-title {
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 4px;
         }
+
         .activity-date {
             font-size: 13px;
             color: var(--text-muted);
         }
+
         .activity-xp {
             font-weight: 700;
             color: var(--warning);
             font-size: 14px;
         }
+
+        /* Level System & Gated Content */
+        .level-system-section {
+            background: var(--bg-primary);
+            border-radius: var(--radius-lg);
+            padding: 24px 20px;
+            margin: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .level-tiers {
+            display: grid;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .level-tier {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .level-tier.locked {
+            opacity: 0.6;
+            position: relative;
+        }
+
+        .level-tier.locked::after {
+            content: '🔒 LOCKED';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 2;
+        }
+
+        .level-tier.current {
+            border: 2px solid var(--primary);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .level-title {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .level-badge-small {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .activity-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .activity-tag {
+            background: var(--bg-tertiary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .activity-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Info Box */
+        .info-box {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin: 16px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin: 16px 0;
+            color: var(--danger);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
         /* Modal */
         .modal {
             display: none;
@@ -877,11 +1146,13 @@ Y(-2px);
             background-color: rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.3s ease;
         }
+
         .modal.show {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .modal-content {
             background: var(--bg-primary);
             border-radius: var(--radius-xl);
@@ -892,17 +1163,20 @@ Y(-2px);
             overflow-y: auto;
             animation: slideUp 0.3s ease;
         }
+
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
+
         .modal-title {
             font-size: 24px;
             font-weight: 700;
             color: var(--text-primary);
         }
+
         .modal-close {
             width: 32px;
             height: 32px;
@@ -917,21 +1191,143 @@ Y(-2px);
             font-size: 20px;
             color: var(--text-secondary);
         }
+
         .modal-close:hover {
             background: var(--bg-tertiary);
         }
+
         .modal-body {
             color: var(--text-secondary);
             line-height: 1.6;
         }
+
+        /* Schedule Modal Styles */
+        .schedule-options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .schedule-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-option:hover {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .schedule-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .schedule-info {
+            flex: 1;
+        }
+
+        .schedule-info h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .schedule-info p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .schedule-status {
+            flex-shrink: 0;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.disconnected {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .status-badge.connected {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+        }
+
+        .availability-benefits {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .availability-benefits h4 {
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .availability-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .availability-benefits li {
+            padding: 4px 0;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .privacy-note {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            border-radius: var(--radius);
+            padding: 12px;
+            margin-top: 16px;
+        }
+
+        .privacy-note p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         @keyframes slideUp {
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+
         /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
@@ -945,6 +1341,7 @@ Y(-2px);
             padding: 8px 0;
             z-index: 100;
         }
+
         .nav-item {
             display: flex;
             flex-direction: column;
@@ -956,13 +1353,16 @@ Y(-2px);
             transition: all 0.2s ease;
             border-radius: var(--radius);
         }
+
         .nav-item:hover {
             background: var(--bg-secondary);
             color: var(--primary);
         }
+
         .nav-item.active {
             color: var(--primary);
         }
+
         .nav-icon {
             width: 24px;
             height: 24px;
@@ -970,31 +1370,12 @@ Y(-2px);
             align-items: center;
             justify-content: center;
         }
+
         .nav-label {
             font-size: 11px;
             font-weight: 500;
         }
-        /* Utilities */
-        .warning-box {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: var(--radius);
-            padding: 12px;
-            margin: 16px 0;
-            color: var(--danger);
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        .info-box {
-            background: rgba(124, 58, 237, 0.05);
-            border: 1px solid rgba(124, 58, 237, 0.1);
-            border-radius: var(--radius);
-            padding: 12px;
-            margin: 16px 0;
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.5;
-        }
+
         /* Floating Action Button */
         .fab {
             position: fixed;
@@ -1015,42 +1396,47 @@ Y(-2px);
             animation: fabPulse 2s ease-in-out infinite;
             z-index: 999;
         }
+
         @keyframes fabPulse {
             0%, 100% {
                 transform: scale(1) rotate(0deg);
                 box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
             }
             50% {
-                transform: scale(1.05) rotate(5deg);
+                transform: scale(1.05) rotate(3deg);
                 box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
             }
         }
+
         .fab:hover {
-            transform: scale(1.1) rotate(15deg);
+            transform: scale(1.1) rotate(10deg);
             box-shadow: 0 6px 24px rgba(124, 58, 237, 0.5);
         }
-        /* Animations */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .journey-section, .task-card, .season-schedule, .activity-section {
-            animation: slideIn 0.6s ease-out;
-        }
+
         /* Responsive */
         @media (max-width: 640px) {
             .profile-stats {
                 gap: 24px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
             }
+
             .seasons-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .task-meta {
                 flex-direction: column;
                 gap: 12px;
             }
+
             .milestones {
                 font-size: 10px;
+            }
+
+            .activity-grid-container {
+                overflow-x: auto;
+                max-width: 100%;
             }
         }
     </style>
@@ -1065,35 +1451,6 @@ Y(-2px);
                 </svg>
             </button>
         </div>
-    
-    <!-- Floating Action Button -->
-    <div class="fab" title="Quick Actions">
-        ⚡
-    </div>
-    
-    <!-- Modal -->
-    <div id="activityModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">📊 Weekly Activity</h2>
-                <button class="modal-close" onclick="closeModal()">×</button>
-            </div>
-            <div class="modal-body">
-                <p>The weekly activity chart is a visual display of your activity on Pulse over the past year.</p>
-                <br>
-                <p><strong>Activities that contribute towards this chart include:</strong></p>
-                <ul style="margin-left: 20px; margin-top: 10px;">
-                    <li>Attending games</li>
-                    <li>Hosting games</li>
-                    <li>Updating your availability schedule</li>
-                    <li>Reviewing hosts</li>
-                    <li>Tipping hosts</li>
-                </ul>
-                <br>
-                <p>The more active you are, the more vibrant your activity chart becomes! 🔥</p>
-            </div>
-        </div>
-    </div>
         
         <div class="logo">
             <div class="logo-icon">
@@ -1105,23 +1462,13 @@ Y(-2px);
                             <stop offset="66%" style="stop-color:#ec4899;stop-opacity:1" />
                             <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
                         </linearGradient>
-                        <radialGradient id="shadow
-Gradient">
+                        <radialGradient id="shadowGradient">
                             <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.2" />
                             <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.05" />
                         </radialGradient>
-                        <filter id="orbGlow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
-                            <feComponentTransfer>
-                                <feFuncA type="discrete" tableValues="0 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 .5 1"/>
-                            </feComponentTransfer>
-                        </filter>
                     </defs>
-                    <!-- Shadow/reflection ellipse -->
                     <ellipse cx="16" cy="30" rx="14" ry="6" fill="url(#shadowGradient)"/>
-                    <!-- Main gradient orb -->
-                    <circle cx="20" cy="14" r="11" fill="url(#orbGradient)" filter="url(#orbGlow)"/>
-                    <!-- Highlight for 3D effect -->
+                    <circle cx="20" cy="14" r="11" fill="url(#orbGradient)"/>
                     <ellipse cx="18" cy="11" rx="6" ry="5" fill="white" opacity="0.3"/>
                 </svg>
             </div>
@@ -1137,6 +1484,95 @@ Gradient">
         </button>
     </div>
 
+    <!-- Floating Action Button -->
+    <div class="fab" title="Update Schedule Availability" onclick="openScheduleModal()">
+        📅
+    </div>
+
+    <!-- Schedule Availability Modal -->
+    <div id="scheduleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">📅 Update Schedule Availability</h2>
+                <button class="modal-close" onclick="closeScheduleModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Help us recommend the perfect times and venues for activities by sharing your availability!</p>
+                <br>
+                
+                <div class="schedule-options">
+                    <div class="schedule-option" onclick="syncGoogleCalendar()">
+                        <div class="schedule-icon">🔗</div>
+                        <div class="schedule-info">
+                            <h3>Sync Google Calendar</h3>
+                            <p>Automatically sync your calendar so we know when you're free. We'll only see busy/free status, not event details.</p>
+                        </div>
+                        <div class="schedule-status">
+                            <span class="status-badge disconnected">Not Connected</span>
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-option" onclick="openManualSchedule()">
+                        <div class="schedule-icon">⏰</div>
+                        <div class="schedule-info">
+                            <h3>Set Manual Availability</h3>
+                            <p>Choose your regular weekly availability patterns for different activity types.</p>
+                        </div>
+                        <div class="schedule-status">
+                            <span class="status-badge">→</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="availability-benefits">
+                    <h4>🎯 How This Helps Your Squad:</h4>
+                    <ul>
+                        <li><strong>Smart Scheduling:</strong> Hosts get optimal time recommendations based on squad availability</li>
+                        <li><strong>Better Attendance:</strong> Activities scheduled when most people are free</li>
+                        <li><strong>Venue Suggestions:</strong> Platform recommends locations convenient for your squad</li>
+                        <li><strong>Automatic Matching:</strong> Get invited to activities that fit your schedule perfectly</li>
+                    </ul>
+                </div>
+                
+                <div class="privacy-note">
+                    <p><strong>🔒 Privacy:</strong> We only access your busy/free status, never event details. You can disconnect anytime.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="activityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">💓 Pulse Rhythm Explained</h2>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Your Pulse Rhythm is a dynamic visualization of your social connections that drives retention through visible progress and community building.</p>
+                <br>
+                <p><strong>🎯 Key Features:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Connection-Based Intensity:</strong> Purple intensity = number of people met through activities</li>
+                    <li><strong>Hosting Rewards:</strong> Hosting activities creates more connections = stronger pulse</li>
+                    <li><strong>Large Event Bonus:</strong> Attending popular events with many people = brighter visualization</li>
+                    <li><strong>Regression System:</strong> Inactive periods cause your pulse to fade (like video game health bars)</li>
+                    <li><strong>Social Visibility:</strong> Squad members can see each other's connection patterns</li>
+                </ul>
+                <br>
+                <p><strong>📊 Activities that strengthen your pulse:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Hosting activities (Level 5+):</strong> Meet 15-30+ people per event</li>
+                    <li><strong>Large community events:</strong> 20+ person tournaments and meetups</li>
+                    <li><strong>Squad activities:</strong> Consistent 6-person team building</li>
+                    <li><strong>Popular activities:</strong> Join events with high attendance</li>
+                </ul>
+                <br>
+                <p><strong>💡 Pro Tip:</strong> Click or hover on any square to see detailed activity breakdown and connection counts for that week! 🔥</p>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Profile Section -->
         <div class="profile-section">
@@ -1144,24 +1580,26 @@ Gradient">
                 <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237C3AED'/%3E%3Cstop offset='100%25' style='stop-color:%23EC4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23grad)' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-size='80' fill='white'%3EA%3C/text%3E%3C/svg%3E" alt="Profile">
                 <span class="level-badge">⭐ Level 3</span>
             </div>
+            
             <h1 class="profile-name">Alex Martinez</h1>
-            <p class="profile-username">@alexfutsal • 4,850 XP 💎</p>
+            <p class="profile-username">@alexfutsal • 4,850 XP 💎 • Rank #342</p>
             <p class="profile-bio">
                 Professional futsal player & skills coach 🎯 Building community through sports ⚡
-                5x National Champion 🏆 Barcelona FC 🔥
+                5x National Champion 🏆 Phoenix Squad Newcomer 🔥
             </p>
+
             <div class="profile-stats">
                 <div class="stat">
-                    <span class="stat-value">3.2k 🔥</span>
+                    <span class="stat-value">47 🎯</span>
                     <span class="stat-label">Attended</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">12.8k 👥</span>
-                    <span class="stat-label">Followers</span>
+                    <span class="stat-value">15 🤝</span>
+                    <span class="stat-label">Friends</span>
                 </div>
                 <div class="stat">
-                    <span class="stat-value">1248 ⚡</span>
-                    <span class="stat-label">Following</span>
+                    <span class="stat-value">12 🚀</span>
+                    <span class="stat-label">Weekly Streak</span>
                 </div>
             </div>
         </div>
@@ -1170,8 +1608,8 @@ Gradient">
         <div class="journey-section">
             <div class="section-header">
                 <div>
-                    <h2 class="section-title">⚔️ Your Pulse Journey</h2>
-                    <p class="section-subtitle">Summer Season 2025</p>
+                    <h2 class="section-title">⚔️ Level 1: Your Pulse Initiation</h2>
+                    <p class="section-subtitle">Fresher's Day • Summer Season 2025</p>
                 </div>
                 <div class="progress-percentage">60% 🔥</div>
             </div>
@@ -1203,77 +1641,88 @@ Gradient">
                 </div>
             </div>
             
-            <!-- Party Card -->
+            <!-- Squad System: 2 Veterans + 4 Newcomers -->
             <div class="party-card">
                 <div class="party-header">
                     <h3 class="party-name">🔥 Phoenix Squad</h3>
-                    <span class="party-badge">⚔️ BATTLE READY</span>
+                    <span class="party-badge">🎓 GRADUATION READY</span>
                 </div>
                 <div class="party-members">
-                    <div class="member veteran" title="Sarah - Veteran Leader">S</div>
-                    <div class="member you" title="You">A</div>
-                    <div class="member" title="Mike">M</div>
-                    <div class="member" title="Lisa">L</div>
-                    <div class="member" title="Tom">T</div>
+                    <div class="member veteran" title="Sarah - Veteran Leader (Level 15)">
+                        S
+                        <span class="member-role">⭐</span>
+                    </div>
+                    <div class="member veteran" title="Mike - Veteran Mentor (Level 12)">
+                        M
+                        <span class="member-role">⭐</span>
+                    </div>
+                    <div class="member you" title="You - Newcomer (Level 3)">A</div>
+                    <div class="member" title="Lisa - Newcomer (Level 2)">L</div>
+                    <div class="member" title="Tom - Newcomer (Level 1)">T</div>
+                    <div class="member" title="Emma - Newcomer (Level 2)">E</div>
                 </div>
                 <div class="info-box">
-                    <strong>💪 Party Strengths:</strong> Mental (Lisa) 🧠 | Physical (Mike) 💪 | Balance (Tom) ⚖️ | Speed (You) ⚡ | Leadership (Sarah) ⭐
+                    <strong>🎯 Squad Structure:</strong> 2 Veterans provide mentorship & knowledge transfer to 4 newcomers who all live within 3-5km radius of each other.<br><br>
+                    <strong>💪 Squad Strengths:</strong> Mental (Lisa) 🧠 | Physical (Mike) 💪 | Balance (Tom) ⚖️ | Speed (You) ⚡ | Leadership (Sarah) ⭐ | Coordination (Emma) 🤝
                 </div>
             </div>
         </div>
 
-        <!-- Current Task -->
+        <!-- Current Task: Seasonal Battle Royale -->
         <div class="task-card epic">
             <div class="countdown-banner">
-                <div class="countdown-label">⏰ BATTLE COUNTDOWN ⏰</div>
+                <div class="countdown-label">🎓 FRESHER'S DAY COUNTDOWN 🎓</div>
                 <div class="countdown-time">18 DAYS : 14 HOURS : 32 MIN</div>
             </div>
             <span class="task-type">⚔️ Challenge Stage</span>
-            <h3 class="task-title">Summer Battle Royale 2025</h3>
+            <h3 class="task-title">Summer Fresher's Day 2025</h3>
             <p class="task-description">
-                Epic seasonal event! 🏆 Compete against 3 rival parties in 5 legendary challenges.
-                This happens only 4 times per year - don't miss it! 💪
+                🎓 THE ONLY WAY TO GRADUATE: Celebration event with many other squads in 5 fun team challenges.
+                This happens only 4 times per year - your squad's graduation depends on this! 🎉
             </p>
+            
             <div class="warning-box">
-                <strong>⚠️ CRITICAL:</strong> All 5 members must attend or your party fails and waits 3 months for the Fall Battle Royale!
+                <strong>⚠️ CRITICAL GRADUATION REQUIREMENT:</strong> All 6 squad members must attend or your entire squad fails and waits 3 months for Fall Fresher's Day! No individual graduation possible - succeed together or wait together.
             </div>
+            
             <div class="challenges-grid">
                 <div class="challenge-item">
                     <div class="challenge-number">1</div>
                     <div class="challenge-info">
                         <div class="challenge-type">🧠 Mental</div>
-                        <div class="challenge-desc">Speed Chess Tournament</div>
+                        <div class="challenge-desc">City-wide Treasure Hunt</div>
                     </div>
                 </div>
                 <div class="challenge-item">
                     <div class="challenge-number">2</div>
                     <div class="challenge-info">
                         <div class="challenge-type">💪 Physical</div>
-                        <div class="challenge-desc">Tug of War</div>
+                        <div class="challenge-desc">Tug of War Fun</div>
                     </div>
                 </div>
                 <div class="challenge-item">
                     <div class="challenge-number">3</div>
                     <div class="challenge-info">
                         <div class="challenge-type">⚖️ Balance</div>
-                        <div class="challenge-desc">Slackline Race</div>
+                        <div class="challenge-desc">Slackline Challenge</div>
                     </div>
                 </div>
                 <div class="challenge-item">
                     <div class="challenge-number">4</div>
                     <div class="challenge-info">
                         <div class="challenge-type">⚡ Speed</div>
-                        <div class="challenge-desc">40-Yard Sprint</div>
+                        <div class="challenge-desc">40-Yard Egg & Spoon Race</div>
                     </div>
                 </div>
                 <div class="challenge-item">
                     <div class="challenge-number">5</div>
                     <div class="challenge-info">
                         <div class="challenge-type">❓ Mystery</div>
-                        <div class="challenge-desc">??? (Revealed on game day)</div>
+                        <div class="challenge-desc">??? (Fun surprise on graduation day!)</div>
                     </div>
                 </div>
             </div>
+            
             <div class="task-meta">
                 <div class="task-meta-item">
                     <div class="task-meta-icon">📅</div>
@@ -1281,36 +1730,41 @@ Gradient">
                 </div>
                 <div class="task-meta-item">
                     <div class="task-meta-icon">📍</div>
-                    <span>Olympic Sports Complex</span>
+                    <span>Unibet Sports Arena</span>
                 </div>
                 <div class="task-meta-item">
                     <div class="task-meta-icon">🏆</div>
-                    <span>+1000 XP</span>
+                    <span>Graduation + 1000 XP</span>
                 </div>
             </div>
+            
             <div class="attendance-status">
                 <div class="attendance-header">
-                    <span class="attendance-label">Battle Attendance</span>
-                    <span class="attendance-count">2/5 confirmed</span>
-                    <span class="attendance-warning">⚠️ Need ALL 5!</span>
+                    <span class="attendance-label">24-Hour Decision Window</span>
+                    <span class="attendance-count">3/6 confirmed</span>
+                    <span class="attendance-warning">⚠️ Need ALL 6!</span>
                 </div>
                 <div class="attendance-members">
                     <div class="attendance-member confirmed" title="Sarah - Confirmed">S</div>
-                    <div class="attendance-member pending" title="You - Click to confirm">A</div>
                     <div class="attendance-member confirmed" title="Mike - Confirmed">M</div>
+                    <div class="attendance-member pending" title="You - Click to confirm">A</div>
                     <div class="attendance-member pending" title="Lisa - Not confirmed">L</div>
-                    <div class="attendance-member pending" title="Tom - Not confirmed">T</div>
+                    <div class="attendance-member confirmed" title="Tom - Confirmed">T</div>
+                    <div class="attendance-member pending" title="Emma - Not confirmed">E</div>
                 </div>
             </div>
+            
             <div class="info-box" style="margin-top: 16px;">
-                <strong>🏆 Rival Parties:</strong> Dragon Force 🐉 | Thunder Legion ⚡ | Shadow Wolves 🐺
+                <strong>🎓 Other Graduating Squads:</strong> Dragon Force 🐉 | Thunder Legion ⚡ | Shadow Wolves 🐺<br>
+                <strong>🎯 Key Point:</strong> This isn't about winning - it's about celebrating together as a complete squad. Any incomplete squad automatically waits for the next season regardless of performance.
             </div>
-            <button class="action-btn">⚔️ Confirm Battle Attendance ⚔️</button>
+            
+            <button class="action-btn">🎓 Confirm Fresher's Day Attendance 🎓</button>
         </div>
 
         <!-- Season Schedule -->
         <div class="season-schedule">
-            <h3 class="schedule-title">🗓️ 2025 Battle Royale Seasons</h3>
+            <h3 class="schedule-title">🗓️ 2025 Fresher's Day Seasons (Only 4 Per Year)</h3>
             <div class="seasons-grid">
                 <div class="season-item">
                     <div class="season-icon">🌸</div>
@@ -1330,19 +1784,19 @@ Gradient">
                 <div class="season-item">
                     <div class="season-icon">❄️</div>
                     <div class="season-name">Winter</div>
-                    <div class="season-date">Dec 7</div>
+                    <div class="season-date">Dec 07</div>
                 </div>
             </div>
         </div>
 
-        <!-- Activity Grid -->
-        <div class="activity-section">
-            <h3 class="section-title">📊 Weekly Activity</h3>
+        <!-- Pulse Rhythm Heatmap -->
+        <div class="pulse-activity-section">
+            <h3 class="section-title">💓 Pulse Rhythm</h3>
+            <p class="section-subtitle">Connection-based visualization where intensity reflects people met through activities - hosting and large events = stronger pulse</p>
+            
             <div class="activity-grid-container">
-                <!-- Month Labels Row - NEW -->
                 <div class="month-labels" id="monthLabels">
                     <div class="month-spacer"></div>
-                    <!-- Month labels will be generated by JavaScript -->
                 </div>
                 
                 <div class="activity-grid">
@@ -1350,27 +1804,115 @@ Gradient">
                         <div class="day-label">Mon</div>
                     </div>
                     <div class="week-row">
+                        <div class="day-label">Tue</div>
+                    </div>
+                    <div class="week-row">
                         <div class="day-label">Wed</div>
                     </div>
                     <div class="week-row">
+                        <div class="day-label">Thu</div>
+                    </div>
+                    <div class="week-row">
                         <div class="day-label">Fri</div>
+                    </div>
+                    <div class="week-row">
+                        <div class="day-label">Sat</div>
                     </div>
                     <div class="week-row">
                         <div class="day-label">Sun</div>
                     </div>
                 </div>
             </div>
+            
             <div class="activity-footer">
-                <a href="#" class="activity-help-link" onclick="openModal(event)">What is this?</a>
+                <a href="#" class="activity-help-link" onclick="openModal(event)">How does Pulse Rhythm work?</a>
                 <div class="activity-legend">
-                    <span>Less</span>
+                    <span>Few</span>
                     <span class="legend-box level-0"></span>
                     <span class="legend-box level-1"></span>
                     <span class="legend-box level-2"></span>
                     <span class="legend-box level-3"></span>
                     <span class="legend-box level-4"></span>
-                    <span>More</span>
+                    <span>Many Connections</span>
                 </div>
+            </div>
+        </div>
+
+        <!-- Level System & Gated Content -->
+        <div class="level-system-section">
+            <h3 class="section-title">🎯 Level System & Gated Content</h3>
+            <p class="section-subtitle">Join activities and earn XP to advance to the next level. Inactivity will cause you to lose XP.</p>
+
+            <div class="level-tiers">
+                <div class="level-tier current">
+                    <div class="level-header">
+                        <div class="level-title">
+                            ✅ Current Access
+                            <span class="level-badge-small">LEVEL 1-3</span>
+                        </div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="activity-tag">⚽ Casual Football</span>
+                        <span class="activity-tag">🏃 Morning Runs</span>
+                        <span class="activity-tag">🏐 Beach Volleyball</span>
+                        <span class="activity-tag">🎮 Game Nights</span>
+                    </div>
+                </div>
+
+                <div class="level-tier">
+                    <div class="level-header">
+                        <div class="level-title">
+                            🔓 Unlock Soon
+                            <span class="level-badge-small">LEVEL 5+</span>
+                        </div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="activity-tag">🎯 Host Activities (Lvl 5+)</span>
+                        <span class="activity-tag">🏆 Weekly Tournaments</span>
+                        <span class="activity-tag">🚴 Century Rides</span>
+                        <span class="activity-tag">⭐ Veteran Mentoring</span>
+                        <span class="activity-tag">💰 Premium Events</span>
+                    </div>
+                </div>
+
+                <div class="level-tier locked">
+                    <div class="level-header">
+                        <div class="level-title">
+                            🏊 Elite Tier
+                            <span class="level-badge-small">LEVEL 15+</span>
+                        </div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="activity-tag">🏊 Masters Swimming</span>
+                        <span class="activity-tag">⛷️ Ski Weekends</span>
+                        <span class="activity-tag">🥊 Boxing Club</span>
+                        <span class="activity-tag">🎪 VIP Events</span>
+                    </div>
+                </div>
+
+                <div class="level-tier locked">
+                    <div class="level-header">
+                        <div class="level-title">
+                            👑 Legend Status
+                            <span class="level-badge-small">LEVEL 50+</span>
+                        </div>
+                    </div>
+                    <div class="activity-tags">
+                        <span class="activity-tag">✈️ Adventure Trips</span>
+                        <span class="activity-tag">💰 Sponsorship Deals</span>
+                        <span class="activity-tag">🏅 Olympic Venue Access</span>
+                        <span class="activity-tag">💎 Lifetime Premium</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>🎮 How Leveling Works:</strong><br>
+                • <strong>Progressive Unlocks:</strong> Higher levels = exclusive activities & hosting privileges<br>
+                • <strong>Prevent Overwhelm:</strong> New users see only Level 1 content initially<br>
+                • <strong>Create FOMO:</strong> Level-gated content becomes status symbols<br>
+                • <strong>Hosting Economy:</strong> Veterans (Level 5+) monetize through premium events<br>
+                • <strong>Video Game Stakes:</strong> Inactive periods cause level regression (unlike static apps)
             </div>
         </div>
 
@@ -1381,16 +1923,16 @@ Gradient">
                 <div class="activity-item">
                     <div class="activity-icon completed">✅</div>
                     <div class="activity-info">
-                        <div class="activity-title">First Meet: Beach Volleyball & 3km Run</div>
-                        <div class="activity-date">June 15, 2025</div>
+                        <div class="activity-title">FIRST MEET: Beach Volleyball & 3km Run</div>
+                        <div class="activity-date">June 15, 2025 • Built initial squad trust</div>
                     </div>
                     <div class="activity-xp">+250 XP</div>
                 </div>
                 <div class="activity-item">
                     <div class="activity-icon completed">✅</div>
                     <div class="activity-info">
-                        <div class="activity-title">Team Bond: Escape Room & Strategy Session</div>
-                        <div class="activity-date">July 20, 2025</div>
+                        <div class="activity-title">TEAM BOND: Escape Room & Strategy Session</div>
+                        <div class="activity-date">July 20, 2025 • Identified squad strengths</div>
                     </div>
                     <div class="activity-xp">+300 XP</div>
                 </div>
@@ -1398,7 +1940,7 @@ Gradient">
                     <div class="activity-icon training">🏋️</div>
                     <div class="activity-info">
                         <div class="activity-title">Pre-Battle Training: Sprint Practice</div>
-                        <div class="activity-date">August 10, 2025</div>
+                        <div class="activity-date">August 10, 2025 • Preparing for Speed Challenge</div>
                     </div>
                     <div class="activity-xp">+100 XP</div>
                 </div>
@@ -1422,7 +1964,7 @@ Gradient">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                 </svg>
             </div>
-            <span class="nav-label">Chat</span>
+            <span class="nav-label">Squad</span>
         </div>
         <div class="nav-item">
             <div class="nav-icon">
@@ -1445,32 +1987,234 @@ Gradient">
     </div>
 
     <script>
-        // Generate activity grid data
+        // Generate activity grid data with detailed connection tracking
         const activityGrid = document.querySelector('.activity-grid');
         const days = ['Mon', 'Wed', 'Fri', 'Sun'];
+        
+        // Store detailed activity data for tooltips
+        const activityData = {};
+        
+        function generateWeeklyActivityData(week, day, weeksSinceJoining) {
+            const activities = [];
+            let totalConnections = 0;
+            
+            if (weeksSinceJoining < 0) return { activities: [], connections: 0 };
+            
+            // Early weeks - learning period
+            if (weeksSinceJoining < 8) {
+                if (Math.random() < 0.6) {
+                    if (day === 'Wed' && Math.random() < 0.4) {
+                        activities.push({ type: 'Joined', name: 'Beach Volleyball', people: 8 });
+                        totalConnections += 8;
+                    }
+                    if (day === 'Fri' && Math.random() < 0.3) {
+                        activities.push({ type: 'Joined', name: 'Morning Run', people: 5 });
+                        totalConnections += 5;
+                    }
+                }
+            } 
+            // Growth period - more activities
+            else if (weeksSinceJoining < 20) {
+                if (Math.random() < 0.8) {
+                    if (day === 'Mon' && Math.random() < 0.5) {
+                        activities.push({ type: 'Joined', name: 'Football Pickup', people: 12 });
+                        totalConnections += 12;
+                    }
+                    if (day === 'Wed' && Math.random() < 0.6) {
+                        activities.push({ type: 'Joined', name: 'Volleyball League', people: 16 });
+                        totalConnections += 16;
+                    }
+                    if (day === 'Fri' && Math.random() < 0.4) {
+                        activities.push({ type: 'Joined', name: 'Squad Training', people: 6 });
+                        totalConnections += 6;
+                    }
+                    if (day === 'Sun' && Math.random() < 0.3) {
+                        activities.push({ type: 'Joined', name: 'Game Night', people: 8 });
+                        totalConnections += 8;
+                    }
+                }
+            }
+            // Recent period - can now host (reached Level 5), more connections
+            else {
+                // Simulate some bad weeks where level dropped
+                if ((week % 7 === 0 && Math.random() < 0.3) || (week === 45)) {
+                    return { activities: [], connections: 0 };
+                }
+                
+                if (Math.random() < 0.85) {
+                    if (day === 'Mon' && Math.random() < 0.6) {
+                        activities.push({ type: 'Joined', name: 'Morning Basketball', people: 10 });
+                        totalConnections += 10;
+                    }
+                    if (day === 'Wed' && Math.random() < 0.4) {
+                        // Can host now! Higher connections for hosting
+                        activities.push({ type: 'Hosted', name: 'Beach Volleyball', people: 18 });
+                        totalConnections += 18;
+                    }
+                    if (day === 'Fri' && Math.random() < 0.7) {
+                        activities.push({ type: 'Joined', name: 'Squad Meetup', people: 6 });
+                        totalConnections += 6;
+                        if (Math.random() < 0.3) {
+                            activities.push({ type: 'Joined', name: 'After-Party', people: 12 });
+                            totalConnections += 12;
+                        }
+                    }
+                    if (day === 'Sun' && Math.random() < 0.5) {
+                        if (Math.random() < 0.3) {
+                            // Hosting gives more connections
+                            activities.push({ type: 'Hosted', name: 'Tournament', people: 24 });
+                            totalConnections += 24;
+                        } else {
+                            activities.push({ type: 'Joined', name: 'Community Run', people: 15 });
+                            totalConnections += 15;
+                        }
+                    }
+                }
+            }
+            
+            return { activities, connections: totalConnections };
+        }
+        
+        function getActivityLevel(connections) {
+            if (connections === 0) return 0;
+            if (connections <= 5) return 1;
+            if (connections <= 12) return 2;
+            if (connections <= 20) return 3;
+            return 4; // 20+ connections
+        }
+        
         days.forEach((day, dayIndex) => {
             const row = activityGrid.children[dayIndex];
             for (let week = 0; week < 52; week++) {
                 const cell = document.createElement('div');
                 cell.className = 'activity-cell';
-                // Random activity level with higher probability for recent weeks
-                const recentBonus = week > 40 ? 2 : 0;
-                const level = Math.min(4, Math.floor(Math.random() * 3) + (week > 45 ? recentBonus : 0));
-                if (Math.random() > 0.2 || week > 42) {
-                    cell.classList.add(`level-${level}`);
+                
+                const joinedWeek = 20; // Joined ~20 weeks ago
+                const weeksSinceJoining = week - joinedWeek;
+                
+                if (week < joinedWeek) {
+                    cell.title = `${day}, Week ${week + 1} - Before joining Pulse`;
+                    activityData[`${week}-${dayIndex}`] = { 
+                        week: week + 1, 
+                        day, 
+                        activities: [], 
+                        connections: 0,
+                        beforeJoining: true 
+                    };
+                } else {
+                    const weekData = generateWeeklyActivityData(week, day, weeksSinceJoining);
+                    const level = getActivityLevel(weekData.connections);
+                    
+                    if (level > 0) {
+                        cell.classList.add(`level-${level}`);
+                    }
+                    
+                    activityData[`${week}-${dayIndex}`] = {
+                        week: week + 1,
+                        day,
+                        activities: weekData.activities,
+                        connections: weekData.connections,
+                        level
+                    };
+                    
+                    cell.title = `${day}, Week ${week + 1} - ${weekData.connections} connections`;
                 }
-                cell.title = `${day}, Week ${week + 1}`;
+                
+                // Add hover and click events
+                cell.addEventListener('mouseenter', (e) => showActivityDetail(e, week, dayIndex));
+                cell.addEventListener('mouseleave', hideActivityDetail);
+                cell.addEventListener('click', (e) => showActivityDetail(e, week, dayIndex, true));
+                
                 row.appendChild(cell);
             }
         });
 
-        // Generate month labels - NEW ADDITION
+        // Activity detail tooltip functions
+        let activeTooltip = null;
+
+        function showActivityDetail(event, week, dayIndex, isClick = false) {
+            const data = activityData[`${week}-${dayIndex}`];
+            if (!data) return;
+
+            // Remove existing tooltip
+            hideActivityDetail();
+
+            const tooltip = document.createElement('div');
+            tooltip.className = 'activity-detail-tooltip';
+            
+            if (data.beforeJoining) {
+                tooltip.innerHTML = `
+                    <div class="tooltip-header">${data.day}, Week ${data.week}</div>
+                    <div>Before joining Pulse 📅</div>
+                `;
+            } else if (data.activities.length === 0) {
+                tooltip.innerHTML = `
+                    <div class="tooltip-header">${data.day}, Week ${data.week}</div>
+                    <div>No activity this day 😴</div>
+                `;
+            } else {
+                const activitiesHTML = data.activities.map(activity => 
+                    `• ${activity.type === 'Hosted' ? '🎯 Hosted' : '🏃 Joined'}: ${activity.name} (${activity.people} people)`
+                ).join('<br>');
+                
+                tooltip.innerHTML = `
+                    <div class="tooltip-header">${data.day}, Week ${data.week}</div>
+                    <div class="tooltip-activities">${activitiesHTML}</div>
+                    <div class="tooltip-connections">💫 ${data.connections} total connections</div>
+                `;
+            }
+
+            // Position tooltip
+            const rect = event.target.getBoundingClientRect();
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            tooltip.style.left = (rect.left + scrollLeft + rect.width / 2) + 'px';
+            tooltip.style.top = (rect.top + scrollTop - 10) + 'px';
+            tooltip.style.transform = 'translateX(-50%) translateY(-100%)';
+
+            document.body.appendChild(tooltip);
+            activeTooltip = tooltip;
+
+            // Show with animation
+            setTimeout(() => {
+                tooltip.classList.add('show');
+            }, 10);
+
+            // Auto-hide for hover (but not click)
+            if (!isClick) {
+                setTimeout(() => {
+                    if (activeTooltip === tooltip) {
+                        hideActivityDetail();
+                    }
+                }, 3000);
+            }
+        }
+
+        function hideActivityDetail() {
+            if (activeTooltip) {
+                activeTooltip.classList.remove('show');
+                setTimeout(() => {
+                    if (activeTooltip && activeTooltip.parentNode) {
+                        activeTooltip.parentNode.removeChild(activeTooltip);
+                    }
+                    activeTooltip = null;
+                }, 200);
+            }
+        }
+
+        // Close tooltip when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('activity-cell')) {
+                hideActivityDetail();
+            }
+        });
+
+        // Generate month labels
         function generateMonthLabels() {
             const monthLabels = document.getElementById('monthLabels');
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            
-            // Calculate weeks per month (approximately)
-            const weeksPerMonth = [4, 4, 5, 4, 4, 5, 4, 5, 4, 4, 5, 4]; // Totals 52 weeks
+            const weeksPerMonth = [4, 4, 5, 4, 4, 5, 4, 5, 4, 4, 5, 4];
             
             months.forEach((month, index) => {
                 const weeks = weeksPerMonth[index];
@@ -1482,10 +2226,9 @@ Gradient">
             });
         }
 
-        // Call the function after the activity grid is generated
         generateMonthLabels();
 
-        // Countdown timer - FIXED
+        // Countdown timer
         function updateCountdown() {
             const battleDate = new Date('2025-08-30T14:00:00');
             const now = new Date();
@@ -1516,33 +2259,67 @@ Gradient">
             document.getElementById('activityModal').classList.remove('show');
         }
 
+        // Schedule Modal functions
+        function openScheduleModal() {
+            document.getElementById('scheduleModal').classList.add('show');
+        }
+
+        function closeScheduleModal() {
+            document.getElementById('scheduleModal').classList.remove('show');
+        }
+
+        function syncGoogleCalendar() {
+            showNotification('🔗 Google Calendar sync coming soon! This will enable smart activity recommendations.');
+            animateXP('+25 XP');
+            
+            // Simulate connection after delay
+            setTimeout(() => {
+                const badge = document.querySelector('.status-badge.disconnected');
+                if (badge) {
+                    badge.textContent = 'Connected ✓';
+                    badge.classList.remove('disconnected');
+                    badge.classList.add('connected');
+                }
+                showNotification('📅 Calendar connected! Hosts will now get better time recommendations for your squad.');
+            }, 2000);
+        }
+
+        function openManualSchedule() {
+            showNotification('⏰ Manual schedule builder coming soon! Set your weekly availability patterns.');
+            animateXP('+15 XP');
+        }
+
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('activityModal');
-            if (event.target == modal) {
-                modal.classList.remove('show');
+            const activityModal = document.getElementById('activityModal');
+            const scheduleModal = document.getElementById('scheduleModal');
+            if (event.target == activityModal) {
+                activityModal.classList.remove('show');
+            }
+            if (event.target == scheduleModal) {
+                scheduleModal.classList.remove('show');
             }
         }
 
-        // Confirm attendance
+        // Confirm attendance - 24-hour decision window
         const actionBtn = document.querySelector('.action-btn');
         actionBtn.addEventListener('click', function() {
             if (!this.disabled) {
-                this.textContent = '⚔️ Battle Ready! ⚔️';
+                this.textContent = '⚔️ Battle Ready! Decision Locked In ⚔️';
                 this.style.background = 'linear-gradient(135deg, #10B981, #059669)';
                 this.disabled = true;
                 
                 // Update attendance
-                const yourAvatar = document.querySelectorAll('.attendance-member')[1];
+                const yourAvatar = document.querySelectorAll('.attendance-member')[2]; // 3rd position (You)
                 yourAvatar.classList.remove('pending');
                 yourAvatar.classList.add('confirmed');
                 
                 // Update count
                 const countElement = document.querySelector('.attendance-count');
-                countElement.textContent = '3/5 confirmed';
+                countElement.textContent = '4/6 confirmed';
                 
                 // Show notification
-                showNotification('⚔️ Battle attendance confirmed! See you at the Summer Battle Royale!');
+                showNotification('⚔️ Decision locked in! Your squad needs 2 more confirmations for graduation.');
                 
                 // Add XP animation
                 animateXP('+50 XP');
@@ -1592,14 +2369,18 @@ Gradient">
             setTimeout(() => {
                 notification.style.animation = 'slideOut 0.3s ease-out forwards';
                 setTimeout(() => notification.remove(), 300);
-            }, 3000);
+            }, 4000);
         }
 
         // Add animations
         const style = document.createElement('style');
         style.textContent = `
+            @keyframes slideIn {
+                from { opacity: 0; transform: translateX(400px); }
+                to { opacity: 1; transform: translateX(0); }
+            }
             @keyframes slideOut {
-                to { opacity: 0; transform: translateX(100%); }
+                to { opacity: 0; transform: translateX(400px); }
             }
             @keyframes xpFloat {
                 0% {
@@ -1618,11 +2399,13 @@ Gradient">
         `;
         document.head.appendChild(style);
 
-        // Simulate member confirmations
+        // Simulate member confirmations every 15 seconds
         function simulateMemberActivity() {
             const pendingMembers = document.querySelectorAll('.attendance-member.pending');
-            if (pendingMembers.length > 1 && Math.random() > 0.7) {
-                const members = Array.from(pendingMembers).filter((m, i) => i !== 0); // Skip "You"
+            if (pendingMembers.length > 1 && Math.random() > 0.6) {
+                const members = Array.from(pendingMembers).filter((m, i) => 
+                    !m.title.includes("You")
+                );
                 if (members.length > 0) {
                     const randomMember = members[Math.floor(Math.random() * members.length)];
                     const memberName = randomMember.title.split(' ')[0];
@@ -1630,39 +2413,46 @@ Gradient">
                     randomMember.classList.add('confirmed');
                     
                     const count = document.querySelectorAll('.attendance-member.confirmed').length;
-                    document.querySelector('.attendance-count').textContent = `${count}/5 confirmed`;
+                    document.querySelector('.attendance-count').textContent = `${count}/6 confirmed`;
                     
-                    showNotification(`⚔️ ${memberName} confirmed for Battle Royale!`);
+                    showNotification(`🎓 ${memberName} confirmed for Fresher's Day!`);
                     
-                    if (count === 5) {
+                    if (count === 6) {
                         setTimeout(() => {
-                            showNotification('🎉 FULL SQUAD READY! Phoenix Squad is complete!');
-                            animateXP('+100 XP BONUS');
+                            showNotification('🎉 FULL SQUAD READY! Phoenix Squad can graduate! All 6 members committed.');
+                            animateXP('+200 XP SQUAD BONUS');
                         }, 1000);
                     }
                 }
             }
         }
 
-        setInterval(simulateMemberActivity, 10000);
+        setInterval(simulateMemberActivity, 15000);
 
         // Floating Action Button
         document.querySelector('.fab').addEventListener('click', function() {
-            const actions = ['⚡ Quick Match', '🎯 Find Activity', '📅 Schedule', '🏆 Leaderboard'];
+            const actions = [
+                '⚡ Quick Match Finder', 
+                '🎯 Browse Level 3 Activities', 
+                '📅 Squad Calendar', 
+                '🏆 Leaderboard',
+                '💪 Pre-Graduation Training'
+            ];
             const randomAction = actions[Math.floor(Math.random() * actions.length)];
             showNotification(`${randomAction} coming soon!`);
             animateXP('+10 XP');
         });
 
+        // Milestone interactions
         document.querySelectorAll('.milestone').forEach(milestone => {
             milestone.addEventListener('click', function() {
                 const label = this.querySelector('span').textContent;
                 const messages = {
-                    'JOINED': '🎯 Welcome! Your journey begins here',
-                    'FIRST MEET': '💪 Sweat together, grow together!',
-                    'TEAM BOND': '🤝 Discover your party\'s hidden strengths',
-                    'CHALLENGE': '⚔️ Epic Battle Royale - Only 4 times a year!',
-                    'GRADUATION': '🎓 The ultimate 40-person victory raid!'
+                    'JOINED': '🎯 Welcome to Pulse Academy! Your journey to lasting friendships begins.',
+                    'FIRST MEET': '💪 Low-barrier activity built initial trust with your squad.',
+                    'TEAM BOND': '🤝 Social activity revealed each member\'s unique strengths.',
+                    'CHALLENGE': '🎓 Fresher\'s Day - The celebration path to graduation. Show up together!',
+                    'GRADUATION': '🎓 Full Pulse membership unlocked. Your squad becomes a lifelong community.'
                 };
                 
                 if (messages[label]) {
@@ -1670,6 +2460,49 @@ Gradient">
                 }
             });
         });
+
+        // Level system interactions
+        document.querySelectorAll('.activity-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const text = this.textContent;
+                if (this.closest('.level-tier.locked')) {
+                    showNotification('🔒 Level up to unlock this activity! Keep building connections daily.');
+                } else if (text.includes('Host Activities')) {
+                    showNotification('🎯 Reach Level 5 to unlock hosting! Create events that bring people together.');
+                } else if (text.includes('Veteran Mentoring')) {
+                    showNotification('⭐ Level 5+ enables veteran mentoring for new squads.');
+                } else {
+                    showNotification('🎮 Activity available at your current level!');
+                }
+            });
+        });
+
+        // Squad member interactions
+        document.querySelectorAll('.member').forEach(member => {
+            member.addEventListener('click', function() {
+                const title = this.title;
+                if (title.includes('Veteran')) {
+                    showNotification('⭐ Veterans provide mentorship and enter cooldown after graduation.');
+                } else if (title.includes('You')) {
+                    showNotification('🎯 You\'re a newcomer! Learn from veterans and bond with your squad.');
+                } else {
+                    showNotification('👥 Fellow newcomer on the same journey to graduation.');
+                }
+            });
+        });
+
+        // Show retention-focused welcome message
+        setTimeout(() => {
+            showNotification('🔥 18 days until your squad\'s graduation celebration! Daily engagement keeps your pulse strong.');
+        }, 2000);
+
+        setTimeout(() => {
+            showNotification('💪 Your squad needs 2 more confirmations. Help remind Lisa and Emma!');
+        }, 8000);
+
+        setTimeout(() => {
+            showNotification('📅 Tip: Update your schedule availability to get better activity recommendations!');
+        }, 15000);
     </script>
 </body>
 </html>
